@@ -8,19 +8,35 @@ namespace PigDice
 {
 	class Program
 	{
-		static void Main(string[] args)
-		{
+		void playpigdice() {
 			Random rnd = new Random();
-			bool kick = false;
 			int total = 0;
+			bool kick = false;
 			while (kick == false) {
 				int temp = rnd.Next(1, 7);
 				total += temp;
 				Console.WriteLine(temp);
-				if (temp == 1) 
-				{ kick = true; }
+				if (temp == 1) { kick = true; }
 			}
 			Console.WriteLine("your score is " + total);
+		}
+
+		void run() {
+			
+			bool quit = false;
+			
+			while (quit == false) {
+				playpigdice();
+				
+				Console.WriteLine("would you like to quit y/n");
+				string ans = Console.ReadLine();
+				ans=ans.ToUpper();
+				quit = ans.StartsWith("Y");
+			}
+		}
+		static void Main(string[] args)
+		{
+			(new Program()).run();
 		}
 	}
 }
