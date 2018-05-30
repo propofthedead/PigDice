@@ -8,15 +8,21 @@ namespace PigDice
 {
 	class Program
 	{
+		Random die = new Random();
+		int rolldie()
+		{
+			
+			int roll = die.Next(1, 7);
+			return roll;
+		}
+
 		void playpigdice() {
-			Random rnd = new Random();
 			int total = 0;
-			bool kick = false;
-			while (kick == false) {
-				int temp = rnd.Next(1, 7);
+			int temp = rolldie();
+			while (temp!=1) {
+				
 				total += temp;
-				Console.WriteLine(temp);
-				if (temp == 1) { kick = true; }
+				temp = rolldie();
 			}
 			Console.WriteLine("your score is " + total);
 		}
